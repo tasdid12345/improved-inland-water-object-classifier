@@ -21,6 +21,28 @@ python analysis.py
 
 Results: written to `results.json` (charts in `figures/`).
 
+## Results (latest run)
+
+On the public UCI Image Segmentation dataset, a class-balanced, calibrated LightGBM reached test macro-F1 of 0.906 versus 0.904 for a standard MLP classifier, a negligible gain within noise, with worse log-loss (0.475 vs 0.292).
+
+| Metric | Value |
+|---|---|
+| baseline_score | 0.9043 |
+| improved_score | 0.9064 |
+| improvement | 0.002165 |
+| baseline_score_std | 0 |
+| improved_score_std | 0 |
+| baseline_accuracy | 0.9048 |
+| improved_accuracy | 0.9048 |
+| baseline_logloss | 0.292 |
+| improved_logloss | 0.4746 |
+| n_seeds | 3 |
+| runtime_seconds | 11.14 |
+
+Run on 2026-10-18. Full output: [results.json](results.json) · [run.log](run.log)
+
+Notes: The paper's own deep network is not described, so the MLP is a stand-in baseline. The dataset is a stand-in for inland-water object detection, not the paper's data. The split is fixed; seeds 42-44 vary only model initialisation. The test set has only about 460 rows, so differences may be within noise. The classes are nearly balanced, so class weighting has limited effect. Hyper-parameter grids are deliberately tiny.
+
 ## Reference
 
 This project is motivated by the following paper:
